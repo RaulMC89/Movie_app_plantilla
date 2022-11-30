@@ -5,12 +5,7 @@ import 'package:provider/provider.dart';
 
 void main() => runApp(AppState());
 
-class AppState extends StatefulWidget {
-  @override
-  State<AppState> createState() => _AppStateState();
-}
-
-class _AppStateState extends State<AppState> {
+class AppState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -18,7 +13,7 @@ class _AppStateState extends State<AppState> {
         ChangeNotifierProvider(
           create: (_) => MoviesProvider(),
           lazy: false,
-        ),
+        )
       ],
       child: MyApp(),
     );
