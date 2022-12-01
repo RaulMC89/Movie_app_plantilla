@@ -11,14 +11,16 @@ class MoviesProvider extends ChangeNotifier {
   String _page = '1';
 
   List<Movie> onDispleyMovies = [];
+  List<Movie> onPopularMovies = [];
 
   MoviesProvider() {
     print("provider inicializado");
     this.getOnDispleyMovies();
+    this.getOnPopularMovies();
   }
 
   getOnDispleyMovies() async {
-    print("getOnDispleyMovies");
+    //print("getOnDispleyMovies");
 
     var url = Uri.https(_baseUrl, '3/movie/now_playing',
         {'api_key': _apiKey, 'language': _language, 'page': _page});
@@ -29,6 +31,22 @@ class MoviesProvider extends ChangeNotifier {
     final nowPlayingResponse = NowPlayingResponse.fromJson(result.body);
 
     onDispleyMovies = nowPlayingResponse.results;
+
+    notifyListeners();
+  }
+
+  getOnPopularMovies() async {
+    print("getOnPopularMovies");
+
+    var url = Uri.https(_baseUrl, '3/movie/popular',
+        {'api_key': _apiKey, 'language': _language, 'page': _page});
+
+    // Await the http get response, then decode the json-formatted response.
+    final result = await http.get(url);
+
+    final nowPlayingPopular = NowPlayingPopular.fromJson(result.body);
+
+    onPopularMovies = nowPlayingPopular.results;
 
     notifyListeners();
   }
