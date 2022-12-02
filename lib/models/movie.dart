@@ -40,6 +40,27 @@ class Movie {
     return 'https://i.stack.imgur.com/GNhx0.png';
   }
 
+  get fullTitle {
+    if (this.title != null) {
+      return '$title';
+    }
+    return 'No tiene titulo';
+  }
+
+  get fullOriginalTitle {
+    if (this.originalTitle != null) {
+      return '$originalTitle';
+    }
+    return 'No tiene titulo original';
+  }
+
+  get fullVoteAverage {
+    if (this.voteAverage != null) {
+      return '$voteAverage';
+    }
+    return 'No tiene votacion';
+  }
+
   factory Movie.fromJson(String str) => Movie.fromMap(json.decode(str));
 
   //String toJson() => json.encode(toMap());

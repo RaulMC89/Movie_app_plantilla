@@ -8,7 +8,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final moviesProvider = Provider.of<MoviesProvider>(context);
 
-    // print(moviesProvider.onDispleyMovies);
+    //print(moviesProvider.onDispleyMovies);
     print(moviesProvider.onPopularMovies);
 
     return Scaffold(
@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
               // Slider de pel·licules
               MovieSlider(movies: moviesProvider.onPopularMovies),
               // Poodeu fer la prova d'afegir-ne uns quants, veureu com cada llista és independent
-              // MovieSlider(),
+              MovieSlider(movies: moviesProvider.onTopRateMovies),
               // MovieSlider(),
             ],
           ),

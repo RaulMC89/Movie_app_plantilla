@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'dart:convert' as convert;
 
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:movies_app/models/models.dart';
 
@@ -12,11 +12,13 @@ class MoviesProvider extends ChangeNotifier {
 
   List<Movie> onDispleyMovies = [];
   List<Movie> onPopularMovies = [];
+  List<Movie> onTopRateMovies = [];
 
   MoviesProvider() {
     print("provider inicializado");
     this.getOnDispleyMovies();
     this.getOnPopularMovies();
+    this.getOnTopRatedMovies();
   }
 
   getOnDispleyMovies() async {
@@ -49,5 +51,23 @@ class MoviesProvider extends ChangeNotifier {
     onPopularMovies = nowPlayingPopular.results;
 
     notifyListeners();
+    print("getOnPopularMovies");
+  }
+
+  getOnTopRatedMovies() async {
+    print("getOnPopularMovies");
+
+    var url = Uri.https(_baseUrl, '3/movie/top_rated',
+        {'api_key': _apiKey, 'language': _language, 'page': _page});
+
+    // Await the http get response, then decode the json-formatted response.
+    final result = await http.get(url);
+
+    final nowPlayingPopular = NowPlayingPopular.fromJson(result.body);
+
+    onTopRateMovies = nowPlayingPopular.results;
+
+    notifyListeners();
+    print("getOnPopularMovies");
   }
 }

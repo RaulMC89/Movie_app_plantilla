@@ -53,7 +53,7 @@ class Dates {
 
   factory Dates.fromJson(String str) => Dates.fromMap(json.decode(str));
 
-  String toJson() => json.encode(toMap());
+  //String toJson() => json.encode(toMap());
 
   factory Dates.fromMap(Map<String, dynamic> json) => Dates(
         maximum: DateTime.parse(json["maximum"]),
