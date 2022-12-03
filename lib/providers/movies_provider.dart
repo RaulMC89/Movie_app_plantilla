@@ -10,14 +10,16 @@ class MoviesProvider extends ChangeNotifier {
   String _language = 'es-ES';
   String _page = '1';
 
+  Map<int, List<Cast>> casting = {};
+
   List<Movie> onDispleyMovies = [];
-  List<Movie> onPopularMovies = [];
+  List<Movie> onPopular = [];
   List<Movie> onTopRateMovies = [];
 
   MoviesProvider() {
     print("provider inicializado");
     this.getOnDispleyMovies();
-    this.getOnPopularMovies();
+    this.getOnPopular();
     this.getOnTopRatedMovies();
   }
 
@@ -37,7 +39,7 @@ class MoviesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  getOnPopularMovies() async {
+  getOnPopular() async {
     print("getOnPopularMovies");
 
     var url = Uri.https(_baseUrl, '3/movie/popular',
@@ -48,7 +50,7 @@ class MoviesProvider extends ChangeNotifier {
 
     final nowPlayingPopular = NowPlayingPopular.fromJson(result.body);
 
-    onPopularMovies = nowPlayingPopular.results;
+    onPopular = nowPlayingPopular.results;
 
     notifyListeners();
     print("getOnPopularMovies");
@@ -69,5 +71,18 @@ class MoviesProvider extends ChangeNotifier {
 
     notifyListeners();
     print("getOnPopularMovies");
+  }
+
+  Future<List<Cast>> getMovieCast(int idMovie) async {
+    var url = Uri.https(_baseUrl, '3/movie/$idMovie/credits',
+        {'api_key': _apiKey, 'language': _language});
+
+    // Await the http get response, then decode the json-formatted response.
+    final result = await http.get(url);
+
+    final creditsResponse = CreditsResponse.fromJson(result.body);
+
+    casting[idMovie] = creditsResponse.cast;
+    return creditsResponse.cast;
   }
 }

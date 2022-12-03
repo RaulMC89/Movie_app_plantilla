@@ -28,7 +28,7 @@ class DetailsScreen extends StatelessWidget {
                   movie: peli,
                 ),
                 // _Overview(),
-                CastingCards(),
+                CastingCards(peli.id),
               ],
             ),
           ),
@@ -103,24 +103,35 @@ class _PosterAndTitile extends StatelessWidget {
                 margin: EdgeInsets.only(top: 20.0),
                 padding: EdgeInsets.all(15.0),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 115, 114, 114),
+                  color: Color.fromARGB(188, 165, 164, 164),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
+                child: Container(
+                  width: 175,
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    movie.fullTitle,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                        fontSize: 18),
+                    maxLines: 3,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+              Container(
+                width: 200,
                 child: Text(
-                  movie.fullTitle,
+                  movie.originalTitle,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.italic,
-                      fontSize: 17),
+                      fontSize: 14),
+                  overflow: TextOverflow.ellipsis,
                   maxLines: 3,
-                  textAlign: TextAlign.justify,
+                  textAlign: TextAlign.center,
                 ),
-              ),
-              Text(
-                movie.originalTitle,
-                style: textTheme.subtitle1,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 3,
               ),
               Row(
                 children: [
@@ -130,7 +141,7 @@ class _PosterAndTitile extends StatelessWidget {
                 ],
               )
             ],
-          )
+          ),
         ],
       ),
     );

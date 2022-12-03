@@ -40,6 +40,13 @@ class Cast {
     return 'https://i.stack.imgur.com/GNhx0.png';
   }
 
+  get fullMame {
+    if (this.name != null) {
+      return '$name';
+    }
+    return 'Sin Nombre';
+  }
+
   factory Cast.fromJson(String str) => Cast.fromMap(json.decode(str));
 
   factory Cast.fromMap(Map<String, dynamic> json) => Cast(

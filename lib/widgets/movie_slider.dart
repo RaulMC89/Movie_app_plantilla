@@ -1,3 +1,4 @@
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 
 import '../models/models.dart';
@@ -36,11 +37,12 @@ class MovieSlider extends StatelessWidget {
             height: 5,
           ),
           Expanded(
-            child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: movies.length,
-                itemBuilder: (BuildContext context, int index) =>
-                    _MoviePoster(movie: movies[index])),
+            child: Swiper(
+              scrollDirection: Axis.horizontal,
+              itemCount: movies.length,
+              itemBuilder: (BuildContext context, int index) =>
+                  _MoviePoster(movie: movies[index]),
+            ),
           )
         ],
       ),
