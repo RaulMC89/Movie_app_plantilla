@@ -108,7 +108,6 @@ class _PosterAndTitile extends StatelessWidget {
                 ),
                 child: Container(
                   width: 175,
-                  alignment: Alignment.topLeft,
                   child: Text(
                     movie.fullTitle,
                     style: TextStyle(
