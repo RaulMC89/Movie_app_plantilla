@@ -2,6 +2,7 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/models/movie.dart';
 
+//nos pinta por pantalla las peliculas que consultamos en el home:screen
 class CardSwiper extends StatelessWidget {
   final List<Movie> movies;
 

@@ -2,7 +2,7 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 
 import '../models/models.dart';
-
+// nos pinta las peliculas en el formato que le configuramos
 class TopRated extends StatelessWidget {
   final List<Movie> movies;
 
@@ -23,7 +23,7 @@ class TopRated extends StatelessWidget {
     }
     return Container(
       width: double.infinity,
-      height: size.height * 0.5,
+      height: size.height * 0.7,
       // color: Colors.red,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,7 +59,7 @@ class _MoviePoster extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 130,
-      height: 190,
+      height: 300,
       // color: Colors.green,
       margin: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
@@ -73,7 +73,7 @@ class _MoviePoster extends StatelessWidget {
                 placeholder: AssetImage('assets/no-image.jpg'),
                 image: NetworkImage(movie.fullPasterPath),
                 width: 130,
-                height: 190,
+                height: 200,
                 fit: BoxFit.cover,
               ),
             ),

@@ -3,7 +3,7 @@
 //     final nowPlayingResponse = nowPlayingResponseFromMap(jsonString);
 
 import 'models.dart';
-
+//formato de la consulta
 class NowPlayingResponse {
   NowPlayingResponse({
     required this.dates,

@@ -1,5 +1,5 @@
 import 'models.dart';
-
+//formato de la consulta
 class CreditsResponse {
   CreditsResponse({
     required this.id,

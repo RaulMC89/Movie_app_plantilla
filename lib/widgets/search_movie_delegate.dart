@@ -1,22 +1,22 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:movies_app/models/models.dart';
 import 'package:provider/provider.dart';
 
-import '../models/models.dart';
 import '../providers/movies_provider.dart';
+//no he conseguido implementarlo
+class SearchMovieDelegate extends StatelessWidget {
+  // final String isMovie;
 
+  //const SearchMovieDelegate({super.key, required this.isMovie});
 
-//nos pinta por pantalla los actores en el formato que le configuramos
-class CastingCards extends StatelessWidget {
-  final int idMovie;
-
-  const CastingCards(this.idMovie);
   @override
   Widget build(BuildContext context) {
     final moviesProvider = Provider.of<MoviesProvider>(context, listen: false);
-
+    final String isMovie = '';
     return FutureBuilder(
-      future: moviesProvider.getMovieCast(idMovie),
-      builder: (BuildContext context, AsyncSnapshot<List<Cast>> snapshot) {
+      future: moviesProvider.getSearchMovie(isMovie),
+      builder: (BuildContext context, AsyncSnapshot<List<Movie>> snapshot) {
         if (!snapshot.hasData) {
           return Container(
             child: Center(
@@ -43,7 +43,7 @@ class CastingCards extends StatelessWidget {
 }
 
 class _CastCard extends StatelessWidget {
-  final Cast casting;
+  final Movie casting;
 
   const _CastCard({super.key, required this.casting});
 
@@ -60,7 +60,7 @@ class _CastCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             child: FadeInImage(
               placeholder: AssetImage('assets/no-image.jpg'),
-              image: NetworkImage(casting.fullrProfilePath),
+              image: NetworkImage(casting.fullPasterPath),
               height: 140,
               width: 100,
               fit: BoxFit.cover,
@@ -70,7 +70,7 @@ class _CastCard extends StatelessWidget {
             height: 5,
           ),
           Text(
-            casting.fullMame,
+            casting.fullTitle,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,

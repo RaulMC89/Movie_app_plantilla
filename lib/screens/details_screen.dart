@@ -4,7 +4,7 @@ import 'package:movies_app/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/movies_provider.dart';
-
+//patalla que se nos abre cuando le damos a un pelicula y salen los de talles y los actores
 class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

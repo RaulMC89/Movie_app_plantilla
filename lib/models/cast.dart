@@ -1,5 +1,6 @@
 import 'models.dart';
 
+//formato de los actores
 class Cast {
   Cast({
     required this.adult,

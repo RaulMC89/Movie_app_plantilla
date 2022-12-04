@@ -1,5 +1,5 @@
 import 'models.dart';
-
+//formato de las pelicula
 class Movie {
   Movie({
     required this.adult,
