@@ -2,6 +2,7 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 
 import '../models/models.dart';
+
 //nos pinta las peliculas que consultamos
 class MovieSlider extends StatelessWidget {
   final List<Movie> movies;
@@ -23,7 +24,7 @@ class MovieSlider extends StatelessWidget {
     }
     return Container(
       width: double.infinity,
-      height: size.height * 0.7,
+      height: size.height * 0.9,
       // color: Colors.red,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
